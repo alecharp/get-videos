@@ -5,6 +5,7 @@
 ## Download youtube video and sound and merge them into one file named after
 ## the youtube video title.
 
+OPTS=$(getopt -o a: -l "audio:" -n "getopt.sh" -- "$@")
 PATTERN='/downloads/%(uploader)s/%(title)s-%(id)s.%(ext)s'
 
 video() {
@@ -29,4 +30,20 @@ usage() {
 if [ $# -eq 0 ]; then
   usage
 fi
-video $@
+
+eval set -- "$OPTS"
+while true ; do
+  case "$1" in
+    -a|--audio)
+      audio $2;
+      shift 2;
+      ;;
+    --)
+      shift;
+      video $@
+      break;
+      ;;
+  esac
+done
+
+exit 0
