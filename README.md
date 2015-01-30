@@ -19,6 +19,10 @@ The image has 2 evolving tags: `latest` and `stable`. `latest` is built against 
 
 ## Changelog
 
+### v1.1
+
+ - support `-a` and `--audio` option to download only the audio part
+
 ### v1.0
 
  - first image release
