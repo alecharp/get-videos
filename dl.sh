@@ -23,7 +23,7 @@ audio() {
 }
 
 usage() {
-  echo "usage: URL [URL...]"
+  echo "usage: [--audio] URL [[--audio] URL...]"
   exit 1
 }
 
