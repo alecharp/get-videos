@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 ## Author: Adrien Lecharpentier <adrien.lecharpentier@gmail.com>
 ##
