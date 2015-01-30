@@ -12,4 +12,12 @@ download() {
   $@
 }
 
+usage() {
+  echo "usage: URL [URL...]"
+  exit 1
+}
+
+if [ $# -eq 0 ]; then
+  usage
+fi
 download $@
