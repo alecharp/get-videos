@@ -11,8 +11,9 @@ PATTERN='/downloads/%(uploader)s/%(title)s-%(id)s.%(ext)s'
 video() {
   youtube-dl \
     -f bestvideo+bestaudio \
+    --merge-output-format mkv \
     -o $PATTERN \
-    $@
+    $1
 }
 
 audio() {
@@ -54,8 +55,8 @@ while true ; do
       usage
       ;;
     --)
+      video $1
       shift;
-      video $@
       break;
       ;;
   esac
