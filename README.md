@@ -19,6 +19,11 @@ The image has 2 evolving tags: `latest` and `stable`. `latest` is built against 
 
 ## Changelog
 
+### v1.2
+
+ - support `-f` and `--format` option for audio file
+ - convert to mp3 audio file by default
+
 ### v1.1
 
  - support `-a` and `--audio` option to download only the audio part
