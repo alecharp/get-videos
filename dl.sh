@@ -16,11 +16,15 @@ video() {
 }
 
 audio() {
+  local f;
+  test -z $2 && f="mp3" || f="$2";
   youtube-dl \
     -f bestaudio \
-    --audio-format "mp3" \
+    -x \
+    --audio-quality 0 \
+    --audio-format $f \
     -o $PATTERN \
-    $@
+    $1
 }
 
 usage() {
