@@ -8,7 +8,7 @@ This docker image enable you to download any video from youtube, for example, in
 
 ```bash
 docker pull alecharp/get-videos:[latest|stable|<version>]
-docker run -v $(pwd):/downloads -ti alecharp/get-videos [--audio] $VIDEO_URL [[--audio] $VIDEO_URL...]
+docker run -v $(pwd):/downloads -ti alecharp/get-videos [--audio] $VIDEO_URL
 ```
 
 ### Tags
@@ -18,6 +18,11 @@ As I'm using the `git-flow` process, `master` is stable, `dev` is unstable, or i
 The image has 2 evolving tags: `latest` and `stable`. `latest` is built against `dev` branch, which should be considered as unstable. The `master` branch generate a `stable` image. Then there is a tag for every release.
 
 ## Changelog
+
+### v1.2
+
+ - support `-f` and `--format` option for audio file
+ - convert to mp3 audio file by default
 
 ### v1.1
 

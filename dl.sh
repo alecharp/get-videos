@@ -5,25 +5,31 @@
 ## Download youtube video and sound and merge them into one file named after
 ## the youtube video title.
 
-OPTS=$(getopt -o a: -l "audio:" -n "getopt.sh" -- "$@")
+OPTS=$(getopt -o a:f: -l "audio:,format:" -n "getopt.sh" -- "$@")
 PATTERN='/downloads/%(uploader)s/%(title)s-%(id)s.%(ext)s'
 
 video() {
   youtube-dl \
     -f bestvideo+bestaudio \
+    --merge-output-format mkv \
     -o $PATTERN \
-    $@
+    $1
 }
 
 audio() {
+  local f;
+  test -z $2 && f="mp3" || f="$2";
   youtube-dl \
     -f bestaudio \
+    -x \
+    --audio-quality 0 \
+    --audio-format $f \
     -o $PATTERN \
-    $@
+    $1
 }
 
 usage() {
-  echo "usage: [--audio] URL [[--audio] URL...]"
+  echo "usage: [--audio [--format m4a|mp3]] URL"
   exit 1
 }
 
@@ -35,12 +41,22 @@ eval set -- "$OPTS"
 while true ; do
   case "$1" in
     -a|--audio)
-      audio $2;
-      shift 2;
+      if [ "$2" = "-f" ] || [ "$2" = "--format" ]; then
+        audio $5 $4;
+        shift 5;
+      else
+        audio $2;
+        shift 2;
+      fi
+      break;
+      ;;
+    -f|--format)
+      echo "This shouldn't happend"
+      usage
       ;;
     --)
+      video $1
       shift;
-      video $@
       break;
       ;;
   esac
