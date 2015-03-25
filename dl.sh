@@ -36,8 +36,18 @@ eval set -- "$OPTS"
 while true ; do
   case "$1" in
     -a|--audio)
-      audio $2;
-      shift 2;
+      if [ "$2" = "-f" ] || [ "$2" = "--format" ]; then
+        audio $5 $4;
+        shift 5;
+      else
+        audio $2;
+        shift 2;
+      fi
+      break;
+      ;;
+    -f|--format)
+      echo "This shouldn't happend"
+      usage
       ;;
     --)
       shift;
