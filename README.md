@@ -8,7 +8,7 @@ This docker image enable you to download any video from youtube, for example, in
 
 ```bash
 docker pull alecharp/get-videos:[latest|stable|<version>]
-docker run -v $(pwd):/downloads -ti alecharp/get-videos [--audio] $VIDEO_URL [[--audio] $VIDEO_URL...]
+docker run -v $(pwd):/downloads -ti alecharp/get-videos [--audio] $VIDEO_URL
 ```
 
 ### Tags
