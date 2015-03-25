@@ -18,12 +18,13 @@ video() {
 audio() {
   youtube-dl \
     -f bestaudio \
+    --audio-format "mp3" \
     -o $PATTERN \
     $@
 }
 
 usage() {
-  echo "usage: [--audio] URL [[--audio] URL...]"
+  echo "usage: [--audio] URL"
   exit 1
 }
 
