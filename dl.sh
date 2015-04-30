@@ -55,8 +55,8 @@ while true ; do
       usage
       ;;
     --)
-      video $1
       shift;
+      video $@
       break;
       ;;
   esac
